@@ -1,13 +1,16 @@
 import { createTheme } from '@mui/material/styles';
+import type {} from '@mui/lab/themeAugmentation';
 
 declare module '@mui/material/styles' {
   interface Palette {
     dark: Palette['primary'];
+    purple: Palette['primary'];
   }
 
   // allow configuration using `createTheme`
   interface PaletteOptions {
     dark?: PaletteOptions['primary'];
+    purple?: PaletteOptions['primary'];
   }
 }
 
@@ -15,24 +18,28 @@ declare module '@mui/material/styles' {
 declare module '@mui/material/Button' {
   interface ButtonPropsColorOverrides {
     dark: true;
+    purple: true;
   }
 }
 
 declare module '@mui/material/Input' {
   interface InputBasePropsColorOverrides {
     dark: true;
+    purple: true;
   }
 }
 
 declare module '@mui/material/TextField' {
   interface TextFieldPropsColorOverrides {
     dark: true;
+    purple: true;
   }
 }
 
 declare module '@mui/material/FormControl' {
   interface FormControlPropsColorOverrides {
     dark: true;
+    purple: true;
   }
 }
 
@@ -42,30 +49,28 @@ export const theme = createTheme({
       main: '#212121',
       contrastText: '#fff',
     },
+    purple: {
+      main: '#6C75F1',
+      contrastText: '#fff',
+    },
   },
   typography: {
     fontFamily: [
+      'Nunito',
+      'Roboto',
+      'sans-serif',
       'IBM Plex Sans',
-      '-apple - system',
+      '-apple-system',
       'BlinkMacSystemFont',
       'Segoe UI',
-      'Roboto',
       'Helvetica Neue',
       'Arial',
-      'sans - serif',
       'Apple Color Emoji',
       'Segoe UI Emoji',
       'Segoe UI Symbol',
     ].join(','),
   },
   components: {
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          boxShadow: '0px 1px 4px rgb(76 87 237 / 24%);',
-        },
-      },
-    },
     MuiSnackbar: {
       defaultProps: {
         autoHideDuration: 5000,
@@ -77,6 +82,11 @@ export const theme = createTheme({
           borderRadius: 10,
           marginTop: 5,
         },
+      },
+    },
+    MuiLoadingButton: {
+      defaultProps: {
+        variant: 'contained',
       },
     },
     MuiButton: {
